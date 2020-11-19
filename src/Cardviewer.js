@@ -1,5 +1,6 @@
 import React from 'react';
 import './Cardviewer.css';
+import {Link} from 'react-router-dom';
 
 class Cardviewer extends React.Component {
     constructor(props) {
@@ -31,42 +32,40 @@ class Cardviewer extends React.Component {
             return (
                 <div>
                     <h2>Card Viewer</h2>
+                    
+                    <p>{"Card " + this.state.index + " out of " + (this.props.cards.length)}</p>
                     <table>
-                        <thead>
-                            <tr><th>{"Card " + this.state.index + "/" + (this.props.cards.length)}</th></tr>
-                        </thead>
                         <tbody>
                             <tr><td onClick={this.flip}>{this.props.cards[this.state.index - 1].front}</td></tr>
                         </tbody>
                     </table>
-                    
+                    <br/>
                     <button onClick={this.previous}>Previous</button>
                    
                     <button onClick={this.next}>Next</button>
 
                     <hr/>
-                    <button onClick={this.props.switchMode}>Go to card editor</button>
+                    <Link to="/editor">Go to card editor</Link>
                 </div>
             );
         } else {
             return (
                 <div>
                     <h2>Card Viewer</h2>
+                    
+                    <p>{"Card " + this.state.index + " out of " + (this.props.cards.length)}</p>
                     <table>
-                        <thead>
-                            <tr><th>{"Card " + this.state.index + "/" + (this.props.cards.length)}</th></tr>
-                        </thead>
                         <tbody>
                             <tr><td onClick={this.flip}>{this.props.cards[this.state.index - 1].back}</td></tr>
                         </tbody>
                     </table>
-                    
+                    <br/>
                     <button onClick={this.previous}>Previous</button>
                     
                     <button onClick={this.next}>Next</button>
 
                     <hr/>
-                    <button onClick={this.props.switchMode}>Go to card editor</button>
+                    <Link to="/editor">Go to card editor</Link>
                 </div>
             );
         }

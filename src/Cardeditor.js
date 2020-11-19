@@ -1,5 +1,6 @@
 import React from 'react';
 import './Cardeditor.css';
+import {Link} from 'react-router-dom';
 
 class Cardeditor extends React.Component {
     constructor(props) {
@@ -60,7 +61,7 @@ class Cardeditor extends React.Component {
                     value={this.state.back}/>
                 <button onClick={this.addCard}>Add card</button>
                 <hr/>
-                <button onClick={this.props.switchMode}>Go to card viwer</button>
+                <Link to="/viewer">Go to card viewer</Link>
             </div>
         );
     };

@@ -1,17 +1,15 @@
 table,
-td,
-th {
+td {
     border : 1px solid black;
 }
 
 table {
     border-collapse: collapse;
-    height: 10%;
-    width: 20%;
+    height: 150px;
+    width: 300px;
 }
 
-td,
-th {
+td {
     padding: 10px;
     text-align: center;
 }

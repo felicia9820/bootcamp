@@ -1,6 +1,8 @@
 import React from 'react';
 import Cardeditor from './Cardeditor';
 import Cardviewer from './Cardviewer';
+import Homepage from './Homepage';
+import {Switch, Route} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +12,6 @@ class App extends React.Component {
         { front: 'front1', back: 'back1' },
         { front: 'front2', back: 'back2' },
       ],
-      editor: true,
     };
   }
 
@@ -25,31 +26,25 @@ class App extends React.Component {
     this.setState({ cards: cards});
   };
 
-  switchMode = () => this.setState({ editor: !(this.state.editor)});
-
   render() {
-    if (this.state.editor) {
-      return (
-        <Cardeditor 
-          addCard={this.addCard} 
-          cards={this.state.cards}
-          deleteCard={this.deleteCard}
-          switchMode={this.switchMode}
-        />
-        
-      );
-    } else {
-      return (
-        <Cardviewer 
-          cards={this.state.cards}
-          switchMode={this.switchMode}
-        />
-
-      );
-    }
-    
-  }
-  
+    return (
+      <Switch>
+        <Route exact path="/">
+          <Homepage/>
+        </Route>
+        <Route exact path="/editor">
+          <Cardeditor 
+            addCard={this.addCard} 
+            cards={this.state.cards}
+            deleteCard={this.deleteCard}
+          />
+        </Route>
+        <Route exact path="/viewer">
+          <Cardviewer cards={this.state.cards}/>
+        </Route>
+      </Switch>
+    );
+  } 
 }
 
 export default App;
